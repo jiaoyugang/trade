@@ -1,0 +1,23 @@
+{
+    "name": "kongflower/trade",
+    "description": "pay module",
+    "keywords": ["alipay", "wechat", "toutiao"],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "gang",
+            "email": "18838952961@163.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0",
+        "ext-curl": "*",
+        "ext-json": "*"
+    },
+    "autoload":{
+        "psr-4":{
+            "Kongflower\\Pay\\": "src"
+        }
+    }
+}
