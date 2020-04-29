@@ -22,8 +22,8 @@ interface WxInterface
 
     /**
      * 关闭订单
+     * 
      */
-
     public function closeorder();
 
     /**
@@ -32,13 +32,11 @@ interface WxInterface
      */
     public function refund();
 
-
     /**
      * 查询退款
      * 
      */
     public function refundquery();
-
 
     /**
      * 支付结果通知
@@ -47,9 +45,9 @@ interface WxInterface
      */
     public function notify();
 
-
     /**
      * 企业付款到个人
+     * 
      */
     public function transfers();
 
