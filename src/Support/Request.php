@@ -1,7 +1,23 @@
-<?php
+<?php declare(strict_types = 1);
 namespace Kongflower\Pay\Support;
 
-class Request {
+final class Request {
+
+    /**
+     * 发送GET请求
+     */
+    public function get( string $url , array $data , array $options = []) : string
+    {
+        return self::send($url, $data ,"GET", $options);
+    }
+
+    /**
+     * 发送POST请求
+     */
+    public function post(string $url , array $data , array $options = []) : string
+    {
+        return self::send($url, $data ,"POST", $options);
+    }
 
     /**
      * CURL模拟网络请求
@@ -16,7 +32,8 @@ class Request {
      * @param $options[cert] 设置证书（支付配置）
      * @return boolean|string
      */
-    public static function send($url , $data , $method, $options = []){
+    private static function send($url , $data , $method, $options = [])
+    {
         if(mb_strtoupper($method) == "POST"){
             $options['data'] = $data;
         }elseif(mb_strtoupper($method) == "GET"){
