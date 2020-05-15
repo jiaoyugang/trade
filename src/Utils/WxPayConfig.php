@@ -4,8 +4,16 @@ namespace Kongflower\Pay\Utils;
 /**
  * 微信支付模式
  */
-class WxPayConfig 
+final class WxPayConfig
 {
+    //PAY TYPE
+    /******************************************************************
+     *      ****    ***    *     *      ***** *     * **** *****      *
+     *      *  *   *   *    *   *         *    *   *  *  * *          *
+     *      ****  *******    * *          *     * *   **** *****      *
+     *      *    *       *    *           *      *    *    *          *
+     *      *   *         *   *           *      *    *    *****      *
+     ******************************************************************/
     /**
      * 在手机、ipad等移动设备中通过浏览器来唤起微信支付的支付产品 
      * 
@@ -81,12 +89,5 @@ class WxPayConfig
      * 查询企业付款API只支持查询30天内的订单，30天之前的订单请登录商户平台查询。
      */
     const PAY_GETTRANFERS = 'mmpaymkttransfers/gettransferinfo';
-
-
-    /** 
-     * 境内普通商户接口请求域名
-     * 
-     */
-    const PAY_DO_MAIN   =   'https://api.mch.weixin.qq.com/';
     
 }
