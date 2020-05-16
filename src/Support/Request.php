@@ -6,7 +6,7 @@ final class Request {
     /**
      * 发送GET请求
      */
-    public function get( string $url , array $data , array $options = []) : string
+    public static function get( string $url , array $data , array $options = []) : string
     {
         return self::send($url, $data ,"GET", $options);
     }
@@ -14,7 +14,7 @@ final class Request {
     /**
      * 发送POST请求
      */
-    public function post(string $url , array $data , array $options = []) : string
+    public static function post(string $url ,  $data , array $options = []) : string
     {
         return self::send($url, $data ,"POST", $options);
     }

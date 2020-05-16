@@ -12,7 +12,7 @@ class WxValidate
     protected $body = array();
 
     /**
-     * 
+     * 初始化
      * 
      */
     public function __construct($valiData)
@@ -24,7 +24,7 @@ class WxValidate
      * 验证支付参数参数
      * 
      */
-    public function validate_param($body)
+    public function validate_param()
     {
         //所有支付接口必传参数
         if( !isset($this->body['appid']) || empty($this->body['appid']) ) {
@@ -61,6 +61,7 @@ class WxValidate
             }
         }
 
+        return $this->body;
     }
 
     /**

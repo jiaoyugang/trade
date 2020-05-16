@@ -58,7 +58,7 @@ final class Helper
      * @param   int     $length
      * @return  string  $str
      */
-    public function nonceStr(int $length = 16) : string
+    public static function nonceStr(int $length = 16) : string
     {
         $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         $str = "";
@@ -76,10 +76,10 @@ final class Helper
      * @param   string  key  key设置路径：微信商户平台(pay.weixin.qq.com)-->账户设置-->API安全-->密钥设置
      * @return  string  signValue
      */
-    public function makeSign(array $params,string $key) : string
+    public static function makeSign(array $params,string $key) : string
     {
         //(1) 过滤控制（参数的值为空不参与签名）
-        $params = $this->filterValue($params);
+        $params = self::filterValue($params);
         //(2) 对参数按照key=value的格式，并按照参数名ASCII字典序排序如下
         ksort($params);
         $stringA = '';
@@ -95,7 +95,7 @@ final class Helper
     /**
      * 过滤控制（参数的值为空不参与签名）
      */
-    protected function filterValue(array $params) : array
+    protected static function filterValue(array $params) : array
     {
         foreach ($params as $k => $v) {
             if (!$v) {
