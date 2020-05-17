@@ -25,7 +25,6 @@ final class Helper
         libxml_disable_entity_loader(true);
 
         return json_decode(json_encode(simplexml_load_string($xmlString, 'SimpleXMLElement', LIBXML_NOCDATA), JSON_UNESCAPED_UNICODE), true);
-
     }
 
     /**

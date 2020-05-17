@@ -11,15 +11,18 @@ class WxApi implements WxInterface
 {
 
     protected $url = 'https://api.mch.weixin.qq.com/';
-    
-    protected $requestObj;
+
+    /**
+     * 支付参数
+     * */
+    protected $requestBody;
 
     /**
      * 初始化参数
      */
     public function __construct($requestBody)
     {
-        $this->requestObj = new WxValidate($requestBody);
+        $this->requestBody = $requestBody;
     }
 
     /** 
@@ -50,7 +53,7 @@ class WxApi implements WxInterface
      */
     public function orderquery()
     {
-
+        
     }
 
     /**

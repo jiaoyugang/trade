@@ -5,16 +5,24 @@ final class Request {
 
     /**
      * 发送GET请求
+     * @param string $url
+     * @param mixed  $data
+     * @param array  $options
+     * @return string
      */
-    public static function get( string $url , array $data , array $options = []) : string
+    public static function get( string $url , $data , array $options = []) : string
     {
         return self::send($url, $data ,"GET", $options);
     }
 
     /**
      * 发送POST请求
+     * @param string $url
+     * @param mixed  $data
+     * @param array  $options
+     * @return string
      */
-    public static function post(string $url ,  $data , array $options = []) : string
+    public static function post(string $url , $data , array $options = []) : string
     {
         return self::send($url, $data ,"POST", $options);
     }
