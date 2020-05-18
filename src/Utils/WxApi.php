@@ -41,8 +41,8 @@ class WxApi implements WxInterface
             $result = Request::post($this->url.WxPayConfig::PAY_UNIFIED_ORDER , $pay_param);
             //返回请求结果
             return Helper::toArray($result);
-        }catch(\Exception $exc){
-            var_dump($exc->getMessage());
+        }catch(\Kongflower\Pay\Exception\WxPayException $exc){
+            die($exc->errorMessage());
             exit;
         }
         

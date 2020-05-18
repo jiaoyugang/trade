@@ -10,5 +10,8 @@ use Exception;
  */
 class WxPayException extends Exception
 {
-    
+    public function errorMessage()
+    {
+        
+    }
 }

@@ -104,6 +104,4 @@ final class Helper
         return $params;
     }
 
-    
-
 }
