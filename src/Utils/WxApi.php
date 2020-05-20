@@ -95,4 +95,9 @@ class WxApi implements WxInterface
     {
 
     }
+
+    public function __callStatic($name, $arguments)
+    {
+        
+    }
 }

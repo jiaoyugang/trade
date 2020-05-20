@@ -33,16 +33,12 @@ class WxValidate
 			throw new WxPayException("缺少统一支付接口必填参数appid！");
 		}elseif( !isset($this->body['mch_id']) || empty($this->body['mch_id']) ){
 			throw new WxPayException("缺少统一支付接口必填参数mch_id！");
-		// }elseif( !isset($this->body['nonce_str']) || empty($this->body['nonce_str']) ) {
-		// 	throw new WxPayException("缺少统一支付接口必填参数nonce_str！");
 		}elseif( !isset($this->body['body']) || empty($this->body['body']) ) {
 			throw new WxPayException("缺少统一支付接口必填参数body！");
 		}elseif( !isset($this->body['out_trade_no']) || empty($this->body['out_trade_no']) ){
             throw new WxPayException("缺少统一支付接口必填参数out_trade_no！");
         }elseif( !isset($this->body['total_fee']) || empty($this->body['total_fee']) ){
             throw new WxPayException("缺少统一支付接口必填参数total_fee！");
-        // }elseif( !isset($this->body['spbill_create_ip']) || empty($this->body['spbill_create_ip']) ){
-        //     throw new WxPayException("缺少统一支付接口必填参数spbill_create_ip！");
         }elseif( !isset($this->body['notify_url']) || empty($this->body['notify_url']) ){
             throw new WxPayException("缺少统一支付接口必填参数notify_url！");
         }elseif( !isset($this->body['trade_type']) || empty($this->body['trade_type']) ){
@@ -65,7 +61,6 @@ class WxValidate
                 if( !isset($this->body['scene_info']) || empty($this->body['scene_info']) ){
                     throw new WxPayException("缺少统一支付接口必填参数trade_type！");
                 }
-                
                 break;
             //app支付
             case WxPayConfig::PAY_APP:
