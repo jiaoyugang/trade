@@ -3,6 +3,7 @@
 namespace Kongflower\Pay\Exception;
 
 use Exception;
+use Kongflower\Pay\Support\Response;
 
 /**
  * class  WxPayException
@@ -10,8 +11,8 @@ use Exception;
  */
 class WxPayException extends Exception
 {
-    public function errorMessage()
+    public function __construct($msg)
     {
-        
+        return (new Response($msg))->respnoseJson();
     }
 }

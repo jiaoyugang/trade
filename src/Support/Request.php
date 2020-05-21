@@ -178,7 +178,12 @@ final class Request {
                 }
             }
         }
-        return ($ip ? $ip : $_SERVER['REMOTE_ADDR']);
+        if(in_array('REMOTE_ADDR',$_SERVER)){
+            return ($ip ? $ip : $_SERVER['REMOTE_ADDR']);
+        }else{
+            return '127.0.0.1';
+        }
+        
     }
 
     /**
@@ -193,7 +198,7 @@ final class Request {
      */
     public static function getAgentRealIp()
     {
-
+            
     }
 
 
