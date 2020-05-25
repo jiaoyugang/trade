@@ -5,8 +5,9 @@ use Kongflower\Pay\Exception\WxPayException;
 use Kongflower\Pay\Support\Helper;
 use Kongflower\Pay\Support\Request;
 
-class Validate
+class WxPayData
 {
+
     protected $body = array();
 
     /**
@@ -19,31 +20,48 @@ class Validate
     }
 
     /**
-     * 验证支付参数参数
+     * 验证支付参数
      * 
      */
-    public function validate_param()
+    public function UnifiedOrderParam()
     {
         //所有支付接口必传参数
-        if( !isset($this->body['appid']) || empty($this->body['appid']) ) {
+        if( !array_key_exists('appid',$this->body) || empty($this->body['appid']) ) {
 			throw new WxPayException("缺少统一支付接口必填参数appid\n");
-		}elseif( !isset($this->body['mch_id']) || empty($this->body['mch_id']) ){
+		}elseif( !array_key_exists('mch_id',$this->body) || empty($this->body['mch_id']) ){
 			throw new WxPayException("缺少统一支付接口必填参数mch_id\n");
-		}elseif( !isset($this->body['body']) || empty($this->body['body']) ) {
+		}elseif( !array_key_exists('body',$this->body) || empty($this->body['body']) ) {
 			throw new WxPayException("缺少统一支付接口必填参数body\n");
-		}elseif( !isset($this->body['out_trade_no']) || empty($this->body['out_trade_no']) ){
+		}elseif( !array_key_exists('out_trade_no',$this->body) || empty($this->body['out_trade_no']) ){
             throw new WxPayException("缺少统一支付接口必填参数out_trade_no\n");
-        }elseif( !isset($this->body['total_fee']) || empty($this->body['total_fee']) ){
+        }elseif( !array_key_exists('total_fee',$this->body) || empty($this->body['total_fee']) ){
             throw new WxPayException("缺少统一支付接口必填参数total_fee\n");
-        }elseif( !isset($this->body['notify_url']) || empty($this->body['notify_url']) ){
+        }elseif( !array_key_exists('notify_url',$this->body) || empty($this->body['notify_url']) ){
             throw new WxPayException("缺少统一支付接口必填参数notify_url\n");
-        }elseif( !isset($this->body['trade_type']) || empty($this->body['trade_type']) ){
+        }elseif( !array_key_exists('trade_type',$this->body) || empty($this->body['trade_type']) ){
             throw new WxPayException("缺少统一支付接口必填参数trade_type\n");
         }
         $this->body['nonce_str'] = Helper::nonceStr();
         $this->body['spbill_create_ip'] = Request::getRealIp();
         $this->checkTradeType($this->body['trade_type']);
         return $this->body;
+    }
+
+    /**
+     * 验证关闭订单参数
+     */
+    public function CloseOrderParam()
+    {
+
+    }
+
+
+    /**
+     * 查询订单
+     */
+    public function OrderQueryParam()
+    {
+        
     }
 
     /**
@@ -84,5 +102,6 @@ class Validate
         }
     }
 
+    
     
 }

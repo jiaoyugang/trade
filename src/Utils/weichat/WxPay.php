@@ -161,8 +161,38 @@ class WxPay implements WxInterface
             $requestBody['trade_type'] = self::$payConfData['trade_type'];
             
             // 验证支付参数
-            $validate = new Validate($requestBody);
-            $payData = $validate->validate_param();
+            $validate = new WxPayData($requestBody);
+            $payData = $validate->UnifiedOrderParam();
+
+            // 组装签名,字段要按照ASII顺序组装签名
+            $payData['sign']  = Helper::makeSign($payData,self::$payConfData['key']); 
+
+            //数据转为xml格式
+            $pay_param = Helper::toXml($payData);
+            
+            // 发送请求
+            $result = Request::post(self::URL.self::PAY_UNIFIED_ORDER , $pay_param);
+            //返回请求结果
+            return Helper::toArray($result);
+        }catch(\Kongflower\Pay\Exception\WxPayException $exc){
+            throw new WxPayException($exc->getMessage());
+        }
+    }
+
+
+    /**
+     * 微信扫码支付模式一
+     */
+    public static function nativeOnePay($requestBody)
+    {
+        try{
+            $requestBody['appid'] = self::$payConfData['appid'];
+            $requestBody['mch_id'] = self::$payConfData['mch_id'];
+            $requestBody['trade_type'] = self::$payConfData['trade_type'];
+            
+            // 验证支付参数
+            $validate = new WxPayData($requestBody);
+            $payData = $validate->UnifiedOrderParam();
 
             // 组装签名,字段要按照ASII顺序组装签名
             $payData['sign']  = Helper::makeSign($payData,self::$payConfData['key']); 
