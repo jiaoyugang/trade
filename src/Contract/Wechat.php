@@ -6,49 +6,43 @@ namespace Kongflower\Pay\Contract;
  * 微信支付接口类
  * 
  */
-interface WxInterface
+interface Wechat
 {
     /** 
-     * 统一下单 
+     * 统一下单
      * 
      * */
-    public static function unifiedOrder($requestBody);
+    public function unifiedOrder($requestBody);
 
     /** 
      * 查询订单
      * 
      */
-    public static function orderquery();
+    public function orderquery();
 
     /**
      * 关闭订单
      * 
      */
-    public static function closeorder();
-
-    /**
-     * 申请退款
-     * 
-     */
-    public static function refund();
+    public function closeorder();
 
     /**
      * 查询退款
      * 
      */
-    public static function refundquery();
+    public function refundquery();
 
     /**
      * 支付结果通知
      * 该链接是通过【统一下单API】中提交的参数notify_url设置，如果链接无法访问，商户将无法接收到微信通知。
      * 
      */
-    public static function notify($requestBody);
+    public function notify($requestBody);
 
-    /**
-     * 企业付款到个人
-     * 
-     */
-    public static function transfers();
+    // /**
+    //  * 企业付款到个人
+    //  * 
+    //  */
+    // public function transfers();
 
 }

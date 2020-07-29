@@ -186,20 +186,4 @@ final class Request {
         
     }
 
-    /**
-     * 获取代理服务器的真实IP地址
-     * nginx有代理情况下
-     * 在nginx中配置中加入
-     * proxy_pass_request_headers on;
-     * proxy_set_header Host $host;
-     * proxy_set_header X-Real-Port $remote_port;
-     * proxy_set_header X-Real-IP $remote_addr;
-     * proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-     */
-    public static function getAgentRealIp()
-    {
-            
-    }
-
-
 }
