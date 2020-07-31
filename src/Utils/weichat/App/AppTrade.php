@@ -8,7 +8,6 @@ use Kongflower\Pay\Support\Request;
 
 class AppTrade implements Wechat,Condation
 {
-    const URL = "https://api.mch.weixin.qq.com/";
     /** 
      * 统一下单
      * @param array $requestBody
