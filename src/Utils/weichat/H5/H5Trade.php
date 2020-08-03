@@ -1,9 +1,9 @@
 <?php declare(strict_types = 1);
-namespace Kongflower\Pay\Utils\Weichat\App;
+namespace Kongflower\Pay\Utils\Weichat\H5;
 
 use Kongflower\Pay\Utils\Weichat\Weichat;
 
-class AppTrade extends Weichat
+class H5Trade extends Weichat
 {
     /**
      * 初始化对象
@@ -12,7 +12,7 @@ class AppTrade extends Weichat
     public function __construct(array $requestBody)
     {
         if(!isset($requestBody['key']) || empty($requestBody['key'])){
-            throw new \Kongflower\Pay\Exception\WxPayException('key为空');
+            throw new \Kongflower\Pay\Exception\WxPayException('keys为空');
         }
 
         if(!isset($requestBody['appid']) || empty($requestBody['appid'])){
@@ -30,7 +30,7 @@ class AppTrade extends Weichat
 
     /** 
      * 统一下单
-     * @param   array $requestBody
+     * @param array $requestBody
      * @return  array
      * */
     public function unified($requestBody): array
