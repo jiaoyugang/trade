@@ -53,7 +53,7 @@ abstract class Weichat implements Condation
         return $this->send($params,'pay/unifiedorder');
     }
 
-    /** 
+    /**
      * 查询订单
      * @param  array  $requestBody
      * @return array

@@ -29,36 +29,36 @@ use Kongflower\Pay\Utils\Weichat\H5\H5Trade;
 // }
 
 
-#初始化支付对象
+#APP支付
 $app = new AppTrade([
     'appid' => 'wxb829f31ecd32bdf5',
     'mch_id' => '10037582',
     'key' => '3phqOIhrvQjCAwdEqpjosP4913ZpEskN',
 ]);
 
-#APP支付
-// $result = $app->unified([
-//     'body' => '测试-充值测试',
-//     'notify_url' => 'https://pay.skinrun.cn/pay_callback',
-//     'out_trade_no' => '20205122452',
-//     'total_fee' => 1,
-//     'trade_type' => 'APP',
-// ]);
-// var_dump($result);
+//统一下单
+$result = $app->unified([
+    'body' => '测试-充值测试',
+    'notify_url' => 'https://pay.skinrun.cn/pay_callback',
+    'out_trade_no' => '20205122452',
+    'total_fee' => 1,
+    'trade_type' => 'APP',
+]);
+var_dump($result);
 
-// #查询订单状态
-// $result_query = $app->orquery([
-//     'transaction_id' => 'dy_13403007360239616',
-// ]);
-// var_dump($result_query);
+#查询订单状态
+$result_query = $app->orquery([
+    'transaction_id' => 'dy_13403007360239616',
+]);
+var_dump($result_query);
 
-
+#H5支付
 $h5 = new H5Trade([
     'appid' => 'wxb829f31ecd32bdf5',
     'mch_id' => '10037582',
     'key' => '3phqOIhrvQjCAwdEqpjosP4913ZpEskN',
 ]);
-#H5支付
+//统一下单
 $result_h5 = $h5->unified([
         'body' => '测试-充值测试',
         'notify_url' => 'https://pay.skinrun.cn/pay_callback',
