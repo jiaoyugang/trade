@@ -37,7 +37,7 @@ interface Condation
      * H5页面通过调用微信支付提供的JSAPI接口调起微信支付模块完成支付 
      * 
      */
-    const PAY_TYPE_MINI = 'JSAPI';
+    const PAY_TYPE_JSAPI = 'JSAPI';
 
     /**
      * 付款码支付 

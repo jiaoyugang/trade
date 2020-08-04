@@ -7,7 +7,10 @@ class AppTrade extends Weichat
 {
     /**
      * 初始化对象
-     * @param  array $requestBody
+     * @param   array   $requestBody
+     * @param   string  key
+     * @param   string  appid
+     * @param   string  mch_id
      */
     public function __construct(array $requestBody)
     {
@@ -26,11 +29,13 @@ class AppTrade extends Weichat
         $this->config['appid']  =  $requestBody['appid']; //微信公众账号ID
         $this->config['mch_id'] =  $requestBody['mch_id']; //微信商户号
         $this->config['key']    =  $requestBody['key']; //加密字符串
+        $this->config['trade_type']  =  self::PAY_TYPE_APP; //支付方式
     }
 
     /** 
      * 统一下单
      * @param   array $requestBody
+     * @param   
      * @return  array
      * */
     public function unified($requestBody): array

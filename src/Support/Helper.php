@@ -78,7 +78,7 @@ final class Helper
     public static function makeSign(array $params,string $key) : string
     {
         //(1) 过滤控制（参数的值为空不参与签名）
-        // $params = self::filterValue($params);
+        $params = self::filterValue($params);
         //(2) 对参数按照key=value的格式，并按照参数名ASCII字典序排序如下
         ksort($params);
         $stringA = '';

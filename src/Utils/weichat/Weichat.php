@@ -29,7 +29,7 @@ abstract class Weichat implements Condation
             'out_trade_no'  => $requestBody['out_trade_no'] ?? '', //商户订单号
             'spbill_create_ip'  => $requestBody['spbill_create_ip'] ?? Request::getRealIp(), 
             'total_fee'     => $requestBody['total_fee'] ?? '',  //金额，分为单位
-            'trade_type'    => $requestBody['trade_type'] ?? '', //App支付交易类型
+            // 'trade_type'    => $requestBody['trade_type'] ?? '', //App支付交易类型
         ];
         
         //可选参数
@@ -50,6 +50,7 @@ abstract class Weichat implements Condation
         ];
 
         $params = array_merge($this->config ,$params,$other);
+        // var_dump($params);exit;
         return $this->send($params,'pay/unifiedorder');
     }
 
@@ -93,6 +94,8 @@ abstract class Weichat implements Condation
 
     /**
      * 发送请求
+     * @param array  $data
+     * @param string $endpaint
      */
     protected function send($data,$endpaint)
     {

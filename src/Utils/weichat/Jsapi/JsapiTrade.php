@@ -1,10 +1,17 @@
-<?php declare(strict_types = 1);
-namespace Kongflower\Pay\Utils\Weichat\H5;
+<?php
+namespace Kongflower\Pay\Utils\Weichat\Jsapi;
 
+use Kongflower\Pay\Contract\Condation;
 use Kongflower\Pay\Utils\Weichat\Weichat;
 
-class H5Trade extends Weichat
+/**
+ * 支付场景：H5商城网站，用户通过消息或扫描二维码在微信内打开网页时，可以调用微信支付完成下单购买的流程。
+ *         实例：公众号支付
+ *          
+ */
+class JsapiTrade extends Weichat implements Condation
 {
+
     /**
      * 初始化对象
      * @param  array $requestBody
@@ -26,7 +33,7 @@ class H5Trade extends Weichat
         $this->config['appid']  =  $requestBody['appid']; //微信公众账号ID
         $this->config['mch_id'] =  $requestBody['mch_id']; //微信商户号
         $this->config['key']    =  $requestBody['key']; //加密字符串
-        $this->config['trade_type']  =  self::PAY_TYPE_H5; //支付方式
+        $this->config['trade_type']  =  self::PAY_TYPE_JSAPI; //支付方式
     }
 
     /** 

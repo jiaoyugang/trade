@@ -1,58 +1,82 @@
-# mini_paylib
-抖音、支付宝，微信支  
+[TOC]
+
 ## 微信支付
 
-+ MWEB支付
+##### APP支付
+```php
+#APP支付
+$app = new AppTrade([
+    'appid' => 'wxb829xxxxxxxxf5',
+    'mch_id' => '10xxxxx',
+    'key' => '3phqOIxxxxxxx913ZpEskN',
+]);
+
+//统一下单
+$result = $app->unified([
+    'body' => '测试-充值测试',
+    'notify_url' => 'https://pay.xxxxx.cn/pay_callback',
+    'out_trade_no' => '20205122452',
+    'total_fee' => 1,
+]);
+var_dump($result);
+
+#查询订单状态：建议优先使用transaction_id，当然也可以使用out_trade_no（商户内部自定义的商品ID）
+$result_query = $app->orquery([
+    'transaction_id' => 'dy_13403007360239616',
+]);
+var_dump($result_query);
+
+```
+##### H5支付
+
+商户在微信客户端外的移动端网页展示商品或服务，用户在前述页面确认使用微信支付时，商户发起本服务呼起微信客户端进行支付。 主要用于触屏版的手机浏览器请求微信支付的场景。可以方便的从外部浏览器唤起微信支付。
 
 ```php
-array(10) {
-    ["return_code"]=>
-    string(7) "SUCCESS"
-    ["return_msg"]=>
-    string(2) "OK"
-    ["appid"]=>
-    string(18) "wxb829xxxx32ssf5"
-    ["mch_id"]=>
-    string(8) "1854452"
-    ["nonce_str"]=>
-    string(16) "6Wfk9qz1CZygrbUn"
-    ["sign"]=>
-    string(32) "8FF0813B2494EDA276C17A10E7E185E8"
-    ["result_code"]=>
-    string(7) "SUCCESS"
-    ["prepay_id"]=>
-    string(36) "wx21170623963880696eefb5c91259572500"
-    ["trade_type"]=>
-    string(4) "MWEB"
-    ["mweb_url"]=>
-    string(118) "https://wx.tenpay.com/cgi-bin/mmpayweb-bin/checkmweb?prepay_id=wx21170623963880696eefb5c91259572500&package=2877554408"
-}
+
+// #H5支付
+$h5 = new H5Trade([
+    'appid' => 'wxb829xxxxxxxxf5',
+    'mch_id' => '10xxxxx',
+    'key' => '3phqOIxxxxxxx913ZpEskN',
+]);
+
+//统一下单
+$result_h5 = $h5->unified([
+        'body' => '测试-充值测试',
+        'notify_url' => 'https://pay.xxxxx.cn/pay_callback',
+        'out_trade_no' => '202051225779',
+        'scene_info' => '{"h5_info": {"type":"IOS","app_name": "测试","bundle_id": "com.tencent.wzryIOS"}}',
+        'total_fee' => 1 , //分
+]);
+
+var_dump($result_h5);
+
+#查询订单状态：建议优先使用transaction_id，当然也可以使用out_trade_no（商户内部自定义的商品ID）
+$result_query = $h5->orquery([
+    'transaction_id' => 'dy_13403007360239616',
+]);
+var_dump($result_query);
 
 ```
 
-+ JSAPI支付
+##### JSAPI支付
 
 ```php
-array(9) {
-  ["return_code"]=>
-  string(7) "SUCCESS"
-  ["return_msg"]=>
-  string(2) "OK"
-  ["appid"]=>
-  string(18) "wxb829f31ecd32bdf5"
-  ["mch_id"]=>
-  string(8) "10037582"
-  ["nonce_str"]=>
-  string(16) "eh5MkYBCkYy6kXlv"
-  ["sign"]=>
-  string(32) "0061F2F696E9E2DBC3BBCB270755369E"
-  ["result_code"]=>
-  string(7) "SUCCESS"
-  ["prepay_id"]=>
-  string(36) "wx21174147282801c83d84b10e1499748400"
-  ["trade_type"]=>
-  string(5) "JSAPI"
-}
+$jsapi = new JsapiTrade([
+    'appid' => 'wxb829xxxxxxxxf5',
+    'mch_id' => '10xxxxx',
+    'key' => '3phqOIxxxxxxx913ZpEskN',
+]);
+
+$resultJsapi = $jsapi->unified([
+    'body' => '测试-充值测试',
+    'notify_url' => 'https://pay.skinrun.cn/pay_callback',
+    'out_trade_no' => '202054541484',
+    'total_fee' => 1,
+    'openid' => 'oTrN9t1gi91ER6k98_Wv7E1W1jeA', //JSAPI支付必传参数
+]);
+
+var_dump($resultJsapi);
 ```
 
 + NATIVE
