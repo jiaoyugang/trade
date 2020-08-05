@@ -2,17 +2,114 @@
 namespace Kongflower\Pay\Utils\Weichat;
 
 use Kongflower\Pay\Contract\Condation;
+use Kongflower\Pay\Contract\GatewayApplicationInterface;
 use Kongflower\Pay\Exception\WxPayException;
 use Kongflower\Pay\Support\Helper;
 use Kongflower\Pay\Support\Request;
 
-abstract class Weichat implements Condation
+abstract class Weichat implements Condation,GatewayApplicationInterface
 {
+
+    /**
+     * To pay.
+     *
+     * @author gang <18838952961@163.com>
+     *
+     * @param string $gateway
+     * @param array  $params
+     *
+     * @return Collection|Response
+     */
+    public function pay($gateway, $params)
+    {
+        
+    }
+
+    /**
+     * Query an order.
+     *
+     * @author gang <18838952961@163.com>
+     *
+     * @param string|array $order
+     *
+     * @return Collection
+     */
+    public function find($order, string $type)
+    {
+        
+    }
+
+    /**
+     * Refund an order.
+     *
+     * @author gang <18838952961@163.com>
+     *
+     * @return Collection
+     */
+    public function refund(array $order)
+    {
+        
+    }
+
+    /**
+     * Cancel an order.
+     *
+     * @author gang <18838952961@163.com>
+     *
+     * @param string|array $order
+     *
+     * @return Collection
+     */
+    public function cancel($order)
+    {
+        
+    }
+
+    /**
+     * Close an order.
+     *
+     * @author gang <18838952961@163.com>
+     *
+     * @param string|array $order
+     *
+     * @return Collection
+     */
+    public function close($order)
+    {
+        
+    }
+
+    /**
+     * Verify a request.
+     *
+     * @author gang <18838952961@163.com>
+     *
+     * @param string|array|null $content
+     *
+     * @return Collection
+     */
+    public function verify($content, bool $refund)
+    {
+        
+    }
+
+    /**
+     * Echo success to server.
+     *
+     * @author gang <18838952961@163.com>
+     *
+     * @return Response
+     */
+    public function success()
+    {
+        
+    }
+
+
     /**
      * 支付配置参数
      */
     protected $config = [];
-
 
     /** 
      * 统一下单

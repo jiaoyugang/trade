@@ -24,9 +24,8 @@ class Response
      */
     public function respnoseJson()
     {
-        die($this->body);
+        var_dump($this->body);exit;
     }
-
     
     public function __call($name, $arguments)
     {
